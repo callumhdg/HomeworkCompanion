@@ -3,6 +3,14 @@ A C# app for teachers to allocate classes of students homework.
 
 
 
+# ERD
+
+
+
+
+
+
+
 # Project Goals
 
 ## Epics
@@ -21,11 +29,40 @@ A C# app for teachers to allocate classes of students homework.
 
 # Sprints
 
-### Sprint 1:
+### Sprint 1 Start:
 
 ![Initial_Backlog](Images/Backlog_0.png)
 
 This was the initial project backlog, the *Done* column and the *Notes* column have been swapped for this screenshot only.
+
+
+
+In this Sprint I will:
+
+- [x] Project Initialisation 0.1
+- [x] Project Initialisation 0.2
+- [x] Project Initialisation 0.3
+- [ ] User Story 2.1
+
+
+
+### Sprint 1 End:
+
+![Sprint1_End_Backlog](Images/Backlog_1.png)
+
+
+
+
+
+### Sprint 1 Retrospective:
+
+The first sprint is usually the most challenging so I tried to aim for an achievable amount to complete; the sprint goals were to initialise the project and the database. Initialising the project went without a hitch but when writing the create statements for the database it became apparent that another link table was needed. 
+
+One thing that I would do differently next time would be to not create the ERD until the backlog is well populated, this resulted in me planning ideas that were too specific instead of planning more general ideas of what needs to be done.
+
+Another improvement would be to add a bit more than I think can be done this sprint because I aimed too small I had to add another user story into the sprint goals.
+
+
 
 
 
