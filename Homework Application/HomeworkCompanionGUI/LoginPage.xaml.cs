@@ -68,6 +68,8 @@ namespace HomeworkCompanionGUI
             teacherWindow.Show();
 
             HideMainWindow();
+
+            App.Current.MainWindow = teacherWindow;
         }
 
         private void btnStudentLogin_Click(object sender, RoutedEventArgs e)
@@ -78,6 +80,8 @@ namespace HomeworkCompanionGUI
             studentWindow.Show();
 
             HideMainWindow();
+
+            App.Current.MainWindow = studentWindow;
         }
 
 

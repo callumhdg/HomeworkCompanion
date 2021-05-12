@@ -41,6 +41,13 @@ namespace HomeworkCompanionGUI
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+
+            App.Current.MainWindow = mainWindow;
+        }
+
+        private void btnClassesPage_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherFrame.Content = new ClassPage();
         }
     }
 }

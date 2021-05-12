@@ -2,6 +2,7 @@ using NUnit.Framework;
 using HomeworkCompanion;
 using BusinessLayer;
 using System.Linq;
+using System;
 
 namespace UnitTests
 {
@@ -119,16 +120,52 @@ namespace UnitTests
 
                 db.QuestionTemplates.RemoveRange(questionTemplateToDelete);
 
-
-                //var QuestionTemplateToDelete1 =
-                //    db.QuestionTemplates.Where(q => q.QuestionText == "example" && q.Answer == "example" && q.MaximumMarks == 101)
-                //    .Select(q => q).FirstOrDefault();
-
-                //db.QuestionTemplates.RemoveRange(QuestionTemplateToDelete1);
-
                 db.SaveChanges();
             }
         }
+
+    }
+
+
+    public class Students_In_Class_Tests
+    {
+        StudentsInClassManagement studentsInClassManagement;
+
+        [SetUp]
+        public void Setup()
+        {
+            studentsInClassManagement = new StudentsInClassManagement();
+
+            //create dummy class
+
+            //create dummy student
+
+
+        }
+
+
+        [Test]
+        public void StudentIsAddedToClass()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        [Test]
+        public void StudentIsRemovedFromClass()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        [TearDown]
+        public void TearDownStudentsInClassTests()
+        {
+
+        }
+
+
 
     }
 
