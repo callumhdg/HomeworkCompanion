@@ -26,44 +26,46 @@ namespace HomeworkCompanionGUI
         {
             InitializeComponent();
 
-            PopulateListOfTeachers();
-            PopulateListOfStudents();
+            MainFrame.Content = new LoginPage();
+
+            //PopulateListOfTeachers();
+            //PopulateListOfStudents();
         }
 
-        public void PopulateListOfTeachers()
-        {
-            lstTeachers.Items.Clear();
+        //public void PopulateListOfTeachers()
+        //{
+        //    lstTeachers.Items.Clear();
 
-            var teacherManagement = new TeacherManagement();
-            var allTeachers = teacherManagement.SelectAllTeachers();
+        //    var teacherManagement = new TeacherManagement();
+        //    var allTeachers = teacherManagement.SelectAllTeachers();
 
-            foreach (var item in allTeachers)
-            {
-                lstTeachers.Items.Add(item);
-            }
-        }
+        //    foreach (var item in allTeachers)
+        //    {
+        //        lstTeachers.Items.Add(item);
+        //    }
+        //}
 
-        public void PopulateListOfStudents()
-        {
-            lstStudents.Items.Clear();
+        //public void PopulateListOfStudents()
+        //{
+        //    lstStudents.Items.Clear();
 
-            var studentManagement = new StudentManagement();
-            var allStudents = studentManagement.SelectAllStudent();
+        //    var studentManagement = new StudentManagement();
+        //    var allStudents = studentManagement.SelectAllStudent();
 
-            foreach (var item in allStudents)
-            {
-                lstStudents.Items.Add(item);
-            }
-        }
+        //    foreach (var item in allStudents)
+        //    {
+        //        lstStudents.Items.Add(item);
+        //    }
+        //}
 
-        private void btnTeacherLogin_Click(object sender, RoutedEventArgs e)
-        {
+        //private void btnTeacherLogin_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void btnStudentLogin_Click(object sender, RoutedEventArgs e)
-        {
+        //private void btnStudentLogin_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
     }
 }

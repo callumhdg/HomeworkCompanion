@@ -6,11 +6,11 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:HomeworkCompanionGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="HomeworkCompanion" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -45,7 +45,7 @@
 
         <Label Content="Students" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36"/>
         <ListBox x:Name="lstStudents" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="5" Background="AliceBlue"/>
-        <Button x:Name="btnStudentLogin" Grid.Row="7" Grid.Column="6" Content="Login" Click="btnStudentLogin_Click" FontSize="18"/>
+        <Button x:Name="btnStudentLogin" Grid.Row="7" Grid.Column="6" Content="Login" Click="btnStudentLogin_Click" FontSize="18"/>-->
         
         
     </Grid>
