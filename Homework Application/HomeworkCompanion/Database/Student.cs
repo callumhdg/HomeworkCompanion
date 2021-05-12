@@ -20,5 +20,10 @@ namespace HomeworkCompanion
 
         public virtual ICollection<HomeworkForStudent> HomeworkForStudents { get; set; }
         public virtual ICollection<StudentsInClass> StudentsInClasses { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title} {FirstName} {LastName}";
+        }
     }
 }

@@ -3,10 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:HomeworkCompanionGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
+
+        </Grid.RowDefinitions>
+
+        <Label Content="Teachers" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36"/>
+        <ListBox x:Name="lstTeachers" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Background="AliceBlue"/>
+        <Button x:Name="btnTeacherLogin" Grid.Row="7" Grid.Column="2" Content="Login" Click="btnTeacherLogin_Click" FontSize="18"/>
+
+        <Label Content="Students" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36"/>
+        <ListBox x:Name="lstStudents" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="5" Background="AliceBlue"/>
+        <Button x:Name="btnStudentLogin" Grid.Row="7" Grid.Column="6" Content="Login" Click="btnStudentLogin_Click" FontSize="18"/>
+        
+        
     </Grid>
 </Window>

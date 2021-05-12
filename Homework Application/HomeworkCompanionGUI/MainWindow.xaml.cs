@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BusinessLayer;
+using HomeworkCompanion;
 
 namespace HomeworkCompanionGUI
 {
@@ -23,6 +25,45 @@ namespace HomeworkCompanionGUI
         public MainWindow()
         {
             InitializeComponent();
+
+            PopulateListOfTeachers();
+            PopulateListOfStudents();
+        }
+
+        public void PopulateListOfTeachers()
+        {
+            lstTeachers.Items.Clear();
+
+            var teacherManagement = new TeacherManagement();
+            var allTeachers = teacherManagement.SelectAllTeachers();
+
+            foreach (var item in allTeachers)
+            {
+                lstTeachers.Items.Add(item);
+            }
+        }
+
+        public void PopulateListOfStudents()
+        {
+            lstStudents.Items.Clear();
+
+            var studentManagement = new StudentManagement();
+            var allStudents = studentManagement.SelectAllStudent();
+
+            foreach (var item in allStudents)
+            {
+                lstStudents.Items.Add(item);
+            }
+        }
+
+        private void btnTeacherLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStudentLogin_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
