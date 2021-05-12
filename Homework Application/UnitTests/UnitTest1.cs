@@ -30,20 +30,82 @@ namespace UnitTests
         }
 
         [Test]
-        public void QuestionTemplateIsAddedToDatabase()
+        public void AddedQuestionTemplateToDatabase()
         {
             using (var db = new HomeworkCompanionContext())
             {
                 int before = 0, after = 0;
                 before = db.QuestionTemplates.Count();
 
-                _questionTemplateManager.CreateQuestionTemplate("3 + 5", "8", 1);
+                _questionTemplateManager.CreateQuestionTemplate("TestData", "TestData", 187);
                 after = db.QuestionTemplates.Count();
 
                 Assert.AreEqual(before, after - 1);
             }
 
         }
+
+        [Test]
+        public void UpdatedQuestionTemplate()
+        {
+            string expectedQuestion = "TestData", actualQuestion = "";
+            string expectedAnswer = "TestData", actualAnswer = "";
+            int expectedMaxMarks = 187, actualMaxMarks = 0;
+
+            using (var db = new HomeworkCompanionContext())
+            {
+                var newQuestionTemplate = new QuestionTemplate() { QuestionText = "example123", Answer = "example123", MaximumMarks = 201 };
+                db.QuestionTemplates.Add(newQuestionTemplate);
+                db.SaveChanges();
+
+                var questionTemplateToUpdate =
+                    db.QuestionTemplates.Where(q => q.QuestionText == "example123" && q.Answer == "example123" && q.MaximumMarks == 201)
+                    .Select(q => q.QuestionId).FirstOrDefault();
+
+                _questionTemplateManager.UpdateQuestionTemplate(questionTemplateToUpdate, "TestData", "TestData", 187);
+            }
+
+            using (var db = new HomeworkCompanionContext())
+            {
+                var updatedQuestionTemplate =
+                    db.QuestionTemplates.Where(q => q.QuestionText == "TestData" && q.Answer == "TestData" && q.MaximumMarks == 187)
+                    .Select(q => q).FirstOrDefault();
+
+                actualQuestion = updatedQuestionTemplate.QuestionText;
+                actualAnswer = updatedQuestionTemplate.Answer;
+                actualMaxMarks = updatedQuestionTemplate.MaximumMarks;
+            }
+
+            Assert.AreEqual(expectedQuestion, actualQuestion);
+            Assert.AreEqual(expectedAnswer, actualAnswer);
+            Assert.AreEqual(expectedMaxMarks, actualMaxMarks);
+        }
+
+
+        [Test]
+        public void DeletedQuestionTemplateIsRemovedFromDatabase()
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                int before = 0, after = 0;
+                
+                var newQuestionTemplate = new QuestionTemplate() { QuestionText = "example111", Answer = "example111", MaximumMarks = 101 };
+                db.QuestionTemplates.Add(newQuestionTemplate);
+                db.SaveChanges();
+
+                before = db.QuestionTemplates.Count();
+
+                var QuestionTemplateToDelete =
+                db.QuestionTemplates.Where(q => q.QuestionText == "example111" && q.Answer == "example111" && q.MaximumMarks == 101)
+                .Select(q => q.QuestionId).FirstOrDefault();
+
+                _questionTemplateManager.DeleteQuestionTemplate(QuestionTemplateToDelete);
+                after = db.QuestionTemplates.Count();
+
+                Assert.AreEqual(before, after + 1);
+            }            
+        }
+
 
         [TearDown]
         public void TearDownQuestionTemplateTests()
@@ -52,12 +114,17 @@ namespace UnitTests
             {
                 var questionTemplateToDelete =
                     from q in db.QuestionTemplates
-                    where q.QuestionText == "3 + 5" && q.Answer == "8" && q.MaximumMarks == 1
+                    where q.QuestionText == "TestData" && q.Answer == "TestData" && q.MaximumMarks == 187
                     select q;
 
                 db.QuestionTemplates.RemoveRange(questionTemplateToDelete);
 
 
+                //var QuestionTemplateToDelete1 =
+                //    db.QuestionTemplates.Where(q => q.QuestionText == "example" && q.Answer == "example" && q.MaximumMarks == 101)
+                //    .Select(q => q).FirstOrDefault();
+
+                //db.QuestionTemplates.RemoveRange(QuestionTemplateToDelete1);
 
                 db.SaveChanges();
             }

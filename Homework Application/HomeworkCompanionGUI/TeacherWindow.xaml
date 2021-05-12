@@ -9,7 +9,14 @@
     <Grid>
         <Frame x:Name="TeacherFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="13"/>
 
-        <Button x:Name="btnQuestions" Content="Questions" Grid.Column="1" MinHeight="80" FontSize="28" Click="btnQuestions_Click"/>
+        <Button x:Name="btnQuestions" Content="Questions" Grid.Column="1" MinHeight="80" FontSize="28" Click="btnQuestions_Click">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#8c1aff" Offset="1"/>
+                    <GradientStop Color="#5200cc"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>

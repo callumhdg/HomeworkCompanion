@@ -8,13 +8,8 @@
       d:DesignHeight="650" d:DesignWidth="1200"
       Title="QuestionsPage">
 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="#d580ff" Offset="1"/>
-                <GradientStop Color="#99ccff"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="White">
+        
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
@@ -22,7 +17,7 @@
             <ColumnDefinition/>
 
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition/>
 
             <ColumnDefinition/>
@@ -40,13 +35,52 @@
             <RowDefinition/>
 
             <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition/>
             <RowDefinition Height="0.2*"/>
 
         </Grid.RowDefinitions>
 
-        <Label Content="Questions Page" Grid.Row="1" Grid.Column="1" FontSize="40" Grid.ColumnSpan="2"/>
+        <!--<Label Content="Questions Page" Grid.Row="1" Grid.Column="1" FontSize="40" Grid.ColumnSpan="2"/>-->
+        <ListBox x:Name="lstAllQuestionTemplates" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="6" Background="AliceBlue" FontSize="12" SelectionChanged="lstAllQuestionTemplates_SelectionChanged"/>
 
+        <Label Content="Question Text" Grid.Column="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="40"/>
+        <TextBox x:Name="txtQuestion" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" FontSize="20" Background="#f7e6ff" Foreground="#400080"/>
+
+        <Label Content="Answer Text" Grid.Column="5" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="40"/>
+        <TextBox x:Name="txtAnswer" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="3" VerticalContentAlignment="Center" FontSize="20" Background="#f7e6ff" Foreground="#400080"/>
+
+        <Label Content="Maximum Marks" Grid.Column="5" Grid.Row="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="40"/>
+        <TextBox x:Name="txtMaximumMarks" Grid.Column="5" Grid.Row="6" Grid.ColumnSpan="3" VerticalContentAlignment="Center" FontSize="20" Background="#f7e6ff" Foreground="#400080"/>
+
+        <Button x:Name="btnAddQuestionTemplate" Content="Add" Grid.Column="1" Grid.Row="8" MinHeight="80" FontSize="26" Click="btnAddQuestionTemplate_Click" Margin="5,5,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#00e600" Offset="1"/>
+                    <GradientStop Color="#00b300"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+
+        <Button x:Name="btnUpdateQuestionTemplate" Content="Update" Grid.Column="2" Grid.Row="8" MinHeight="80" FontSize="26" Click="btnUpdateQuestionTemplate_Click" Margin="5,5,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#4d79ff" Offset="1"/>
+                    <GradientStop Color="#002db3"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+
+        <Button x:Name="btnDeleteQuestionTemplate" Content="Delete" Grid.Column="3" Grid.Row="8" MinHeight="80" FontSize="26" Click="btnDeleteQuestionTemplate_Click" Margin="5,5,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#ff3300" Offset="1"/>
+                    <GradientStop Color="#e60000"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>

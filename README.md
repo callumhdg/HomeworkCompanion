@@ -74,12 +74,12 @@ Another improvement would be to add a bit more than I think can be done this spr
 
 
 
-Sprint Goals:
-
-- [ ] Utilities login
+Sprint Goals:- [ ] Utilities login
 - [ ] User Story 1.1
 - [ ] User Story 1.2
 - [ ] User Story 2.1
+- [ ] User Story 2.2
+- [ ] User Story 2.3
 - [ ] User Story 3.1
 
 

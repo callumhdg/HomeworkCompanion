@@ -22,15 +22,29 @@ namespace BusinessLayer
         }
 
 
-        public void UpdateQuestionTemplate()
+        public void UpdateQuestionTemplate(int id, string question, string answer, int maxMarks)
         {
-            throw new NotImplementedException();
+            using (var db = new HomeworkCompanionContext())
+            {
+                SelectedQuestionTemplate = db.QuestionTemplates.Find(id);
+
+                SelectedQuestionTemplate.QuestionText = question;
+                SelectedQuestionTemplate.Answer = answer;
+                SelectedQuestionTemplate.MaximumMarks = maxMarks;
+
+                db.SaveChanges();
+            }
         }
 
 
-        public void DeleteQuestionTemplate()
+        public void DeleteQuestionTemplate(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new HomeworkCompanionContext())
+            {
+                var questionTemplateToDelete = db.QuestionTemplates.Find(id);
+                db.QuestionTemplates.Remove(questionTemplateToDelete);
+                db.SaveChanges();
+            }
         }
 
 
