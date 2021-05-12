@@ -74,6 +74,8 @@ namespace HomeworkCompanionGUI
         {
 
 
+            StudentWindow studentWindow = new StudentWindow();
+            studentWindow.Show();
 
             HideMainWindow();
         }

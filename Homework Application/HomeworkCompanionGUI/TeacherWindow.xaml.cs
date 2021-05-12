@@ -32,5 +32,15 @@ namespace HomeworkCompanionGUI
         {
             TeacherFrame.Content = new QuestionsPage();
         }
+
+        private void btnTeacherLogout_Click(object sender, RoutedEventArgs e)
+        {
+            //TeacherWindow teacherWindow = (HomeworkCompanionGUI.TeacherWindow)App.Current.MainWindow;
+            TeacherWindow teacherWindow = (HomeworkCompanionGUI.TeacherWindow)App.Current.MainWindow;
+            teacherWindow.Visibility = System.Windows.Visibility.Hidden;
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
     }
 }
