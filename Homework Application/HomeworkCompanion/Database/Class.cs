@@ -19,5 +19,10 @@ namespace HomeworkCompanion
 
         public virtual Teacher ClassTeacherFkNavigation { get; set; }
         public virtual ICollection<StudentsInClass> StudentsInClasses { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ClassSubject} - {ClassName}";
+        }
     }
 }

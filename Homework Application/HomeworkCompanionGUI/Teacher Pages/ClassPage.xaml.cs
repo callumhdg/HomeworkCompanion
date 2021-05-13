@@ -22,21 +22,27 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class ClassPage : Page
     {
-        private int? _selectedClass = 1; //set default to null
+        private int? _selectedClass = null; //set default to null
+        private int _currentTeacher = 1; //change when login is added
         private StudentManagement _studentManagement = new StudentManagement();
         private StudentsInClassManagement _studentsInClassManagement = new StudentsInClassManagement();
+        private ClassManagement _classManagement = new ClassManagement();
 
         private List<Student> _inClassStudents = new List<Student>();
         private List<Student> _notInClassStudents = new List<Student>();
+        private List<Class> _classesOfTeacher = new List<Class>();
 
         public ClassPage()
         {
             InitializeComponent();
 
-            UpdateDisplay((int)_selectedClass);
+            //UpdateDisplay((int)_selectedClass);
 
             btnAddToClass.Content = "<- Add --";
             btnRemoveFromClass.Content = "-- Remove ->";
+
+            fillListOfClasses(_currentTeacher);
+            cbxSelectClass.SelectedIndex = 1;
         }
 
         public void UpdateDisplay(int classID)
@@ -120,10 +126,51 @@ namespace HomeworkCompanionGUI
         }
 
 
+        private void fillListOfClasses(int teacherID)
+        {
+            cbxSelectClass.Items.Clear();
+            _classesOfTeacher = _classManagement.SelectAllClassesForATeacher(teacherID);
+
+            foreach (var item in _classesOfTeacher)
+            {
+                cbxSelectClass.Items.Add(item);
+            }
+            
+        }
+
         private void Clear()
         {
             lstNotInCurrentClass.Items.Clear();
             lstNotInCurrentClass.Items.Clear();
+        }
+
+        private void cbxSelectClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Clear();
+
+            if (cbxSelectClass.SelectedIndex < 0)
+            {
+                _selectedClass = null;
+
+                MessageBox.Show("No class selected");
+            }
+            else
+            {
+                _selectedClass = _classesOfTeacher[cbxSelectClass.SelectedIndex].ClassId;
+                if (_selectedClass == null || _selectedClass < 0)
+                {
+                    Clear();
+
+                    //MessageBox.Show("No class selected");
+                }
+                else
+                {
+                    UpdateDisplay((int)_selectedClass);
+                }
+            }
+
+
+
         }
     }
 }
