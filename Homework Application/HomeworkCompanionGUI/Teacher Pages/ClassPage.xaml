@@ -67,7 +67,7 @@
         <ListBox x:Name="lstNotInCurrentClass" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="AliceBlue"/>
 
         <Label Content="Class Select" Grid.Row="5" Grid.Column="1" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
-        <ComboBox x:Name="cbxSelectClass" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Background="#f7e6ff" Foreground="#400080"/>
+        <ComboBox x:Name="cbxSelectClass" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Background="#f7e6ff" Foreground="#400080" SelectionChanged="cbxSelectClass_SelectionChanged"/>
 
 
     </Grid>

@@ -30,6 +30,7 @@ namespace HomeworkCompanionGUI
 
         private QuestionTemplateManagement _questionTemplateManagement = new QuestionTemplateManagement();
         private ClassManagement _classManagement = new ClassManagement();
+        private HomeworkManagement _homeworkManagement = new HomeworkManagement();
 
         public HomeworkPage()
         {
@@ -115,9 +116,18 @@ namespace HomeworkCompanionGUI
             {
                 MessageBox.Show("Please select a class to assign homework to");
             }
+            else if (txtHomeworkTitle.Text == "")
+            {
+                MessageBox.Show("Please specify a homework title");
+            }
+            else if (dueDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please select a due date");
+            }
             else
             {
-
+                _homeworkManagement.AssignClassHomework(_classesOfTeacher[cbxSelectClass.SelectedIndex].ClassId, txtHomeworkTitle.Text, (DateTime)dueDate.SelectedDate, _selectedQuestions);
+                MessageBox.Show($"{_classesOfTeacher[cbxSelectClass.SelectedIndex].ClassName} was assigned the homework: {txtHomeworkTitle.Text} - Due: {(DateTime)dueDate.SelectedDate}");
             }
 
         }

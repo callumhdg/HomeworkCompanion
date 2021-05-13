@@ -65,6 +65,18 @@ namespace BusinessLayer
         }
 
 
+        public QuestionTemplate SelectSingleQuestionTemplate(int id)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                var selectQuestion = db.QuestionTemplates
+                    .Where(q => q.QuestionId == id)
+                    .Select(q => q).FirstOrDefault();
+
+                return selectQuestion;
+            }
+        }
+
 
     }
 }
