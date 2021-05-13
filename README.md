@@ -112,13 +112,27 @@ The `SelectAllStudentsInAClass()` and `SelectAllStudentsNotInAClass()` were only
 
 
 
+## Sprint3 -
+
+### Start:
+
+![Sprint3_Start_Backlog](Images/Backlog_4.png)
 
 
 
 
 
+### End:
+
+![Sprint3_End_Backlog](Images/Backlog_5.png)
 
 
+
+
+
+### Retrospective:
+
+Sprint 3 went well, in this sprint I implemented user story 3.1 *Assign a Class Homework* which was likely the biggest single user story in the project. Another positive was fixing the class view, now teachers can only view classes that they teach also, when adding or removing students to/from a class the listboxes now display correctly.
 
 
 
