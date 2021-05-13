@@ -49,5 +49,10 @@ namespace HomeworkCompanionGUI
         {
             TeacherFrame.Content = new ClassPage();
         }
+
+        private void btnAssignHomeworkPage_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherFrame.Content = new HomeworkPage();
+        }
     }
 }

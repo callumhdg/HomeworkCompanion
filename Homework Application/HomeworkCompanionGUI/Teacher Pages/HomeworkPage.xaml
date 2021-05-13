@@ -1,4 +1,4 @@
-﻿<Page x:Class="HomeworkCompanionGUI.ClassPage"
+﻿<Page x:Class="HomeworkCompanionGUI.HomeworkPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:HomeworkCompanionGUI"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1200"
-      Title="ClassPage">
+      Title="HomeworkPage">
 
     <Grid Background="White">
 
@@ -35,16 +35,20 @@
             <RowDefinition/>
 
             <RowDefinition/>
-            <!--<RowDefinition/>-->
+            <RowDefinition/>
             <RowDefinition Height="0.2*"/>
 
         </Grid.RowDefinitions>
 
-        <Label Content="Students In Selected Class" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
-        <ListBox x:Name="lstCurrentInClass" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="AliceBlue"/>
+        <Label Content="Questions In Homework" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
+        <ListBox x:Name="lstQuestionsInHomework" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="AliceBlue"/>
 
-        
-        <Button x:Name="btnAddToClass" Grid.Column="4" Grid.Row="2" Content="Add" FontSize="20" MinHeight="60" Margin="5, 5, 5, 5" Click="btnAddToClass_Click">
+
+        <Label Content="Question Bank" Grid.Row="1" Grid.Column="5" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
+        <ListBox x:Name="lstQuestionBank" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="AliceBlue"/>
+
+
+        <Button x:Name="btnAddQuestionToHomework" Grid.Column="4" Grid.Row="2" Content="Add" FontSize="20" MinHeight="60" Margin="5, 5, 5, 5" Click="btnAddQuestionToHomework_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#00e600" Offset="1"/>
@@ -53,7 +57,7 @@
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnRemoveFromClass" Grid.Column="4" Grid.Row="4" Content="Remove" FontSize="20" MinHeight="60" Margin="5, 5, 5, 5" Click="btnRemoveFromClass_Click">
+        <Button x:Name="btnRemoveQuestionFromHomework" Grid.Column="4" Grid.Row="4" Content="Remove" FontSize="20" MinHeight="60" Margin="5, 5, 5, 5" Click="btnRemoveQuestionFromHomework_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#ff3300" Offset="1"/>
@@ -63,12 +67,17 @@
         </Button>
 
 
-        <Label Content="All Other Students" Grid.Row="1" Grid.Column="5" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
-        <ListBox x:Name="lstNotInCurrentClass" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="AliceBlue"/>
-
-        <Label Content="Class Select" Grid.Row="5" Grid.Column="1" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="42"/>
         <ComboBox x:Name="cbxSelectClass" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Background="#f7e6ff" Foreground="#400080"/>
 
-
+        <Button x:Name="btnAssignHomeworkToClass" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="6" Content="Assign Homework" FontSize="24" MinHeight="60" Margin="5, 5, 5, 5" Click="btnAssignHomeworkToClass_Click">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#4d79ff" Offset="1"/>
+                    <GradientStop Color="#002db3"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        
+        
     </Grid>
 </Page>

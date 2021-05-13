@@ -32,7 +32,7 @@
 
         
 
-        <Button x:Name="btnAssignHomeworkPage" Content="Homework" Grid.Column="5" MinHeight="80" FontSize="28">
+        <Button x:Name="btnAssignHomeworkPage" Content="Homework" Grid.Column="5" MinHeight="80" FontSize="28" Click="btnAssignHomeworkPage_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#8c1aff" Offset="1"/>
