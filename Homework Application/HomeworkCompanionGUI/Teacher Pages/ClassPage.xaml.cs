@@ -36,8 +36,6 @@ namespace HomeworkCompanionGUI
         {
             InitializeComponent();
 
-            //UpdateDisplay((int)_selectedClass);
-
             btnAddToClass.Content = "<- Add --";
             btnRemoveFromClass.Content = "-- Remove ->";
 
@@ -45,21 +43,14 @@ namespace HomeworkCompanionGUI
             cbxSelectClass.SelectedIndex = 1;
         }
 
-        public void UpdateDisplay(int classID)
+        public void UpdateListBoxes()
         {
             Clear();
-
-            //System.Threading.Thread.Sleep(1000);
-
-            _notInClassStudents = _studentManagement.SelectAllStudentsNotInAClass(classID);
 
             foreach (var item in _notInClassStudents)
             {
                 lstNotInCurrentClass.Items.Add(item);
             }
-
-
-            _inClassStudents = _studentManagement.SelectAllStudentsInAClass(classID);
 
             foreach (var item in _inClassStudents)
             {
@@ -67,62 +58,58 @@ namespace HomeworkCompanionGUI
             }
         }
 
-
-        public void PopulateListOfAllStudentsNotInAClass(int classID)
+        public void CreateLocalListsOfStudents(int classID)
         {
-            lstNotInCurrentClass.Items.Clear();
+            Clear();
 
-            //var allStudents = _studentManagement.SelectAllStudentsNotInAClass(classID);
-            _notInClassStudents = _studentManagement.SelectAllStudentsNotInAClass(classID);
-
-            foreach (var item in _notInClassStudents)
+            if (_selectedClass >= 0)
             {
-                lstNotInCurrentClass.Items.Add(item);
+                _inClassStudents = _studentManagement.SelectAllStudentsInAClass(classID);
+                _notInClassStudents = _studentManagement.SelectAllStudentsNotInAClass(classID);
+
+                UpdateListBoxes();
+
             }
             
         }
 
 
-        public void PopulateListOfAllStudentsInAClass(int classID)
-        {
-            lstCurrentInClass.Items.Clear();
-
-            //var allStudents = _studentManagement.SelectAllStudentsInAClass(classID);
-            _inClassStudents = _studentManagement.SelectAllStudentsInAClass(classID);
-
-            foreach (var item in _inClassStudents)
-            {
-                lstCurrentInClass.Items.Add(item);
-            }
-
-        }
-
         private void btnAddToClass_Click(object sender, RoutedEventArgs e)
         {
-            if (lstNotInCurrentClass.SelectedIndex >= 0) //&& selected class != null
+            if (lstNotInCurrentClass.SelectedIndex >= 0)
             {
                 int selectedStudentID = _notInClassStudents[lstNotInCurrentClass.SelectedIndex].StudentId;
 
                 _studentsInClassManagement.AddStudentToClass((int)_selectedClass, selectedStudentID);
-            }
 
-            //PopulateListOfAllStudentsNotInAClass((int)_selectedClass); //change to classID
-            //PopulateListOfAllStudentsInAClass((int)_selectedClass); //change to classID
-            UpdateDisplay((int)_selectedClass);
+                _inClassStudents.Add(_notInClassStudents[lstNotInCurrentClass.SelectedIndex]);
+                _notInClassStudents.RemoveAt(lstNotInCurrentClass.SelectedIndex);
+                UpdateListBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to add");
+            }
+            
         }
 
         private void btnRemoveFromClass_Click(object sender, RoutedEventArgs e)
         {
-            if (lstCurrentInClass.SelectedIndex >= 0) //&& selected class != null
+            if (lstCurrentInClass.SelectedIndex >= 0) 
             {
                 int selectedStudentID = _inClassStudents[lstCurrentInClass.SelectedIndex].StudentId;
 
                 _studentsInClassManagement.RemoveStudentFromClass((int)_selectedClass, selectedStudentID);
+
+                _notInClassStudents.Add(_inClassStudents[lstCurrentInClass.SelectedIndex]);
+                _inClassStudents.RemoveAt(lstCurrentInClass.SelectedIndex);
+                UpdateListBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to remove");
             }
 
-            //PopulateListOfAllStudentsNotInAClass((int)_selectedClass); //change to classID
-            //PopulateListOfAllStudentsInAClass((int)_selectedClass); //change to classID
-            UpdateDisplay((int)_selectedClass);
         }
 
 
@@ -140,7 +127,7 @@ namespace HomeworkCompanionGUI
 
         private void Clear()
         {
-            lstNotInCurrentClass.Items.Clear();
+            lstCurrentInClass.Items.Clear();
             lstNotInCurrentClass.Items.Clear();
         }
 
@@ -157,20 +144,13 @@ namespace HomeworkCompanionGUI
             else
             {
                 _selectedClass = _classesOfTeacher[cbxSelectClass.SelectedIndex].ClassId;
-                if (_selectedClass == null || _selectedClass < 0)
-                {
-                    Clear();
 
-                    //MessageBox.Show("No class selected");
-                }
-                else
-                {
-                    UpdateDisplay((int)_selectedClass);
-                }
+                CreateLocalListsOfStudents((int)_selectedClass);
+
             }
 
-
-
         }
+
+
     }
 }
