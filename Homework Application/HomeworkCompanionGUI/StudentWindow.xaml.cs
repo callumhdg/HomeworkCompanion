@@ -28,6 +28,23 @@ namespace HomeworkCompanionGUI
             StudentFrame.Content = new StudentPage();
         }
 
+        private void btnStudentLogout_Click(object sender, RoutedEventArgs e)
+        {
+            StudentWindow studentWindow = (HomeworkCompanionGUI.StudentWindow)App.Current.MainWindow;
+            studentWindow.Visibility = System.Windows.Visibility.Hidden;
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+
+            App.Current.MainWindow = mainWindow;
+        }
+
+        private void btnHomeworkPage_Click(object sender, RoutedEventArgs e)
+        {
+            StudentFrame.Content = new ViewHomeworkPage();
+        }
+
+
 
     }
 }

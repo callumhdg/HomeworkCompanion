@@ -21,7 +21,26 @@ namespace BusinessLayer
             }
         }
 
-        
+        public List<int> SelectAllHomeworkOfStudent(int studentID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                List<int> output = new List<int>();
+                var allStudentHomework =
+                    db.HomeworkForStudents
+                    .Where(h => h.StudentIdFk == studentID)
+                    .Select(h => h.HomeworkIdFk);
+
+                foreach (var item in allStudentHomework)
+                {
+                    output.Add(item);
+                }
+
+                return output;
+            }
+        }
+
+
 
     }
 }

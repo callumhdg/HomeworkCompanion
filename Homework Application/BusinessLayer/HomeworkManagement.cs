@@ -52,6 +52,69 @@ namespace BusinessLayer
         }
 
 
+        public List<Homework> SelectStudentsHomework(int studentID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                List<Homework> output = new List<Homework>();
+                List<Homework> allHomeworkOfStudent = new List<Homework>();
+
+                HomeworkForStudentsManagement hfsManager = new HomeworkForStudentsManagement();
+                List<int> studentsHomeworkIDs = new List<int>();
+
+                studentsHomeworkIDs = hfsManager.SelectAllHomeworkOfStudent(studentID);
+
+                HomeworkManagement _homeworkManagement = new HomeworkManagement();
+                foreach (var item in studentsHomeworkIDs)
+                {
+                    output.Add(_homeworkManagement.SelectSingleHomework(item));
+                }
+
+                return output;
+            }
+        }
+
+
+        public Homework SelectSingleHomework(int id)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {                
+                var selectHomework =
+                    db.Homeworks
+                    .Where(h => h.HomeworkId == id)
+                    .Select(h => h).FirstOrDefault();
+                var output = selectHomework;
+
+                return output;
+            }
+        }
+
+
+        public List<Homework> SelectDueHomework(int studentID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                HomeworkManagement _homeworkManagement = new HomeworkManagement();
+                List<Homework> output = new List<Homework>();
+                List<Homework> allStudentHomework = new List<Homework>();
+
+                allStudentHomework = _homeworkManagement.SelectStudentsHomework(studentID);
+
+                foreach (var item in allStudentHomework)
+                {
+                    int isDue = DateTime.Compare(DateTime.UtcNow, item.DueDate);
+
+                    if (isDue >= 0 && item.SubmissionDate == null)
+                    {
+                        output.Add(item);
+                    }
+                }
+
+                return output;
+            }
+        } 
+
+
 
     }
 }

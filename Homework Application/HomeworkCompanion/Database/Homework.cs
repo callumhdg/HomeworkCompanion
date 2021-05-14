@@ -21,5 +21,16 @@ namespace HomeworkCompanion
 
         public virtual ICollection<AssignedQuestion> AssignedQuestions { get; set; }
         public virtual ICollection<HomeworkForStudent> HomeworkForStudents { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title} - Due: {DueDate}";
+        }
+
+        public string ToStringLong()
+        {
+            return $"{Title} - Due: {DueDate} - Submited: {SubmissionDate} - Marks: {Marks}";
+        }
+
     }
 }

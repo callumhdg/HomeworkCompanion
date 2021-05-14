@@ -9,6 +9,28 @@
     <Grid>
         <Frame x:Name="StudentFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="13"/>
 
+
+        <Button x:Name="btnHomeworkPage" Content="Homework" Grid.Column="1" MinHeight="80" FontSize="28" Click="btnHomeworkPage_Click">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#8c1aff" Offset="1"/>
+                    <GradientStop Color="#5200cc"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+
+
+
+        <Button x:Name="btnStudentLogout" Content="Logout" Grid.Column="11" MinHeight="80" FontSize="28" Click="btnStudentLogout_Click">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#ff3300" Offset="1"/>
+                    <GradientStop Color="#e60000"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        
         
 
         <Grid.RowDefinitions>
