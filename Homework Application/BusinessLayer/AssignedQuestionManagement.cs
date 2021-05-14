@@ -9,7 +9,8 @@ namespace BusinessLayer
 {
     public class AssignedQuestionManagement
     {
-
+        public AssignedQuestion SelectedQuestion { get; set; }
+        public Homework SelectedHomework { get; set; }
 
         public void AssignQuestions(List<QuestionTemplate> questionsToAssign, int homeworkID)
         {
@@ -36,8 +37,66 @@ namespace BusinessLayer
 
         }
 
+        public List<AssignedQuestion> SelectAllQuestionsInHomework(int homeworkID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                List<AssignedQuestion> output = new List<AssignedQuestion>();
+
+                var selectQuestionsInHomework =
+                    db.AssignedQuestions
+                    .Where(q => q.HomeworkIdFk == homeworkID)
+                    .Select(q => q);
+
+                foreach (var item in selectQuestionsInHomework)
+                {
+                    output.Add(item);
+                }
+
+                return output; //returns answer as max marks
+            }
+        }
 
 
+        public void SaveDraftHomework(List<AssignedQuestion> draft)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                foreach (var item in draft)
+                {
+                    UpdateAssignedQuestionAnswer(item);
+                }
+
+                db.SaveChanges();
+            }
+        }
+
+
+        public void SubmitHomework(List<AssignedQuestion> submission)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                SaveDraftHomework(submission);
+
+                SelectedHomework = db.Homeworks.Find(submission[0].HomeworkIdFk);
+                SelectedHomework.SubmissionDate = DateTime.UtcNow;
+
+                db.SaveChanges();
+            }
+        }
+
+
+        public void UpdateAssignedQuestionAnswer(AssignedQuestion updateQuestion)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                SelectedQuestion = db.AssignedQuestions.Find(updateQuestion.AssignedQuestionId);
+
+                SelectedQuestion.SubmitedAnswer = updateQuestion.SubmitedAnswer;
+
+                db.SaveChanges();
+            }
+        }
 
 
     }

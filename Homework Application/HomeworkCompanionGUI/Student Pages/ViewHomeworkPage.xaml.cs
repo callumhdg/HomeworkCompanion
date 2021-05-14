@@ -24,6 +24,9 @@ namespace HomeworkCompanionGUI
     {
         private int _currentStudent = 1;//change when login is added
         private HomeworkManagement _homeworkManagement = new HomeworkManagement();
+        private CompleteHomeworkPage _viewHomeworkPage;
+
+        private List<Homework> _homeworkSelection = new List<Homework>();
         public ViewHomeworkPage()
         {
             InitializeComponent();
@@ -40,13 +43,24 @@ namespace HomeworkCompanionGUI
 
             foreach (var item in studentsCurrentHomework)
             {
+                _homeworkSelection.Add(item);
                 lstAllPendingHomework.Items.Add(item);
             }
         }
 
         private void btnSelectHomeworkToComplete_Click(object sender, RoutedEventArgs e)
         {
+            if (lstAllPendingHomework.SelectedIndex >= 0)
+            {
+                //_viewHomeworkPage = new CompleteHomeworkPage(_homeworkSelection[lstAllPendingHomework.SelectedIndex].HomeworkId);
+                StudentWindow studentWindow = (HomeworkCompanionGUI.StudentWindow)App.Current.MainWindow;
+                studentWindow.StudentFrame.Content = new CompleteHomeworkPage(_homeworkSelection[lstAllPendingHomework.SelectedIndex].HomeworkId);
 
+            }
+            else
+            {
+                MessageBox.Show("Please select a homework");
+            }
         }
 
 
