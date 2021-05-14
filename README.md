@@ -5,7 +5,7 @@ A C# app for teachers to allocate classes of students homework.
 
 # ERD
 
-
+![](C:\Users\callu\Desktop\Sparta Global Training\Reops\HomeworkCompanion\Images\ERD.png)
 
 
 
@@ -39,12 +39,14 @@ This was the initial project backlog, the *Done* column and the *Notes* column h
 
 
 
-Sprint Goals:
+**Sprint Goals:**
 
 - [x] Project Initialisation 0.1
 - [x] Project Initialisation 0.2
 - [x] Project Initialisation 0.3
 - [ ] User Story 2.1
+
+
 
 
 
@@ -76,7 +78,7 @@ Another improvement would be to add a bit more than I think can be done this spr
 
 
 
-Sprint Goals:
+**Sprint Goals:**
 
 - [x] Utilities login
 
@@ -111,23 +113,23 @@ The `SelectAllStudentsInAClass()` and `SelectAllStudentsNotInAClass()` were only
 
 
 
-
-
-
-
 ## Sprint3 -
 
 ### Start:
 
 ![Sprint3_Start_Backlog](Images/Backlog_4.png)
 
-Sprint 3 Goals:
+
+
+**Sprint Goals:**
 
 - [x] User Story 1 - Add Class Select
 - [x] User Story 2.4
 - [x] User Story 2.5
 - [x] User Story 3.1
 - [ ] User Story 4.1
+
+
 
 
 
@@ -147,10 +149,6 @@ Sprint 3 went well, in this sprint I implemented user story 3.1 *Assign a Class 
 
 
 
-
-
-
-
 ## Sprint 4 -
 
 ### Start:
@@ -159,13 +157,13 @@ Sprint 3 went well, in this sprint I implemented user story 3.1 *Assign a Class 
 
 
 
+**Sprint Goals:**
 
-
-
-
-Sprint Goals:
-
-
+- [x] User Story 4.1
+- [x] User Story 4.2
+- [x] User Story 4.3
+- [ ] User Story 5.1
+- [ ] User Story 5.2
 
 
 
@@ -179,9 +177,41 @@ Sprint Goals:
 
 
 
-
-
 ### Retrospective:
+
+This sprint went wall overall but I would have liked to complete more functionality. An unexpected blocker was having to learn how to pass data between windows and pages but now I know how I will focus on a better login in the next sprint, not a username and password login but selecting the user from a listbox. After the login has been improved there isn't a lot left before completing the MVP.
+
+
+
+
+
+## Sprint 5 -
+
+### Start:
+
+![Sprint4_Start_Backlog](Images/Backlog_8.png)
+
+This sprint lasted Saturday and Sunday because neither day was a full day worth of work so this one sprint was two half days.
+
+
+
+**Sprint Goals:**
+
+- [ ] Implement dynamic login
+- [ ] User Story 5.1
+- [ ] User Story 5.2
+
+
+
+
+
+### End:
+
+![Sprint5_End_Backlog](Images/Backlog_9.png)
+
+
+
+
 
 
 
