@@ -42,6 +42,16 @@
         </Button>
 
 
+        <Button x:Name="btnGradeHomeworkPage" Content="Marking" Grid.Column="7" MinHeight="80" FontSize="28" Click="btnGradeHomeworkPage_Click">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#8c1aff" Offset="1"/>
+                    <GradientStop Color="#5200cc"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+
         <Button x:Name="btnTeacherLogout" Content="Logout" Grid.Column="11" MinHeight="80" FontSize="28" Click="btnTeacherLogout_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">

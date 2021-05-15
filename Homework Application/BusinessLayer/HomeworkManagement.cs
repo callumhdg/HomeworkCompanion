@@ -9,6 +9,10 @@ namespace BusinessLayer
 {
     public class HomeworkManagement
     {
+        HomeworkForStudentsManagement _homeworkForStudentsManagement = new HomeworkForStudentsManagement();
+        AssignedQuestionManagement _assignedQuestionManagement = new AssignedQuestionManagement();
+
+        public Homework SelectedHomework { get; set; }
 
         public void AssignHomework(int studentID, string title, DateTime dueDate, List<QuestionTemplate> selectedQuestions)
         {
@@ -18,10 +22,7 @@ namespace BusinessLayer
                 db.Homeworks.Add(newHomework);
 
                 db.SaveChanges();
-            }
-
-            HomeworkForStudentsManagement _homeworkForStudentsManagement = new HomeworkForStudentsManagement();
-            AssignedQuestionManagement _assignedQuestionManagement = new AssignedQuestionManagement();
+            }                       
 
             using (var db = new HomeworkCompanionContext())
             {
@@ -114,6 +115,60 @@ namespace BusinessLayer
             }
         } 
 
+
+
+
+        public List<Homework> SelectHomeworksInClassToMark(int classID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                StudentManagement studentManagement = new StudentManagement();
+                List<Student> studentsInClass = studentManagement.SelectAllStudentsInAClass(classID);
+
+                List<Homework> homeworkForClass = new List<Homework>();
+
+                foreach (var student in studentsInClass)
+                {
+                    List<Homework> studentsHomework = SelectStudentsHomework(student.StudentId);
+
+                    foreach (var homework in studentsHomework)
+                    {
+                        homeworkForClass.Add(homework);
+                    }
+                }
+
+                List<Homework> output = new List<Homework>();
+
+                foreach (var item in homeworkForClass)
+                {
+                    int isPastDue = DateTime.Compare(DateTime.UtcNow, item.DueDate);
+
+                    if (isPastDue >= 0)
+                    {
+                        output.Add(item);
+                    }
+                }
+
+                return output;
+            }
+        }
+
+
+        public void AssignMarksToHomework(int homeworkID, string grade, List<AssignedQuestion> questionsOfHomework)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                SelectedHomework = db.Homeworks.Find(homeworkID);
+                SelectedHomework.Marks = grade;
+
+                foreach (var item in questionsOfHomework)
+                {
+                    _assignedQuestionManagement.AssignMarksToQuestion(item.AssignedQuestionId, (int)item.AwardedMarks);
+                }
+
+                db.SaveChanges();
+            }
+        }
 
 
     }

@@ -93,7 +93,7 @@
         <Label Content="Homework Title" Grid.Column="1" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2" FontSize="40"/>
         <TextBox x:Name="txtHomeworkTitle" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" VerticalContentAlignment="Center" FontSize="20" Background="#f7e6ff" Foreground="#400080"/>
 
-        <Label Content="DueDate" Grid.Column="4" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="40"/>
+        <Label Content="Due Date" Grid.Column="4" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="38"/>
         <DatePicker x:Name="dueDate" Grid.Column="4" Grid.Row="7" Background="AliceBlue" Foreground="White" FontSize="20" Margin="5,5,5,5"/>
 
 

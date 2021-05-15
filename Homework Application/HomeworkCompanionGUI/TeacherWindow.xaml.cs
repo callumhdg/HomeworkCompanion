@@ -56,5 +56,10 @@ namespace HomeworkCompanionGUI
         {
             TeacherFrame.Content = new HomeworkPage(_teacherID);
         }
+
+        private void btnGradeHomeworkPage_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherFrame.Content = new ViewSubmitedHomeworkPage(_teacherID);
+        }
     }
 }

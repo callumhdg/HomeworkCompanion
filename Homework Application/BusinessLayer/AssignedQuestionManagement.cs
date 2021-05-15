@@ -99,5 +99,18 @@ namespace BusinessLayer
         }
 
 
+        public void AssignMarksToQuestion(int questionID, int awardedMark)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                SelectedQuestion = db.AssignedQuestions.Find(questionID);
+
+                SelectedQuestion.AwardedMarks = awardedMark;
+
+                db.SaveChanges();
+            }
+        }
+
+
     }
 }
