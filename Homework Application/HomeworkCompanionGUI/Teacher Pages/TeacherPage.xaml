@@ -40,7 +40,8 @@
 
         </Grid.RowDefinitions>
 
-        <Label Content="Teacher Page" Grid.Row="1" Grid.Column="1" FontSize="40" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblWelcome" Content="Welcome" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="4" FontSize="40" Background="#f7e6ff" Foreground="#400080"/>
+
 
 
     </Grid>

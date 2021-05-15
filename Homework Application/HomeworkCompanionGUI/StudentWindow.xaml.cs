@@ -21,11 +21,13 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class StudentWindow : Window
     {
-        public StudentWindow()
+        private int _studentID = 0;
+        public StudentWindow(int studentID)
         {
             InitializeComponent();
 
-            StudentFrame.Content = new StudentPage();
+            _studentID = studentID;
+            StudentFrame.Content = new StudentPage(_studentID);
         }
 
         private void btnStudentLogout_Click(object sender, RoutedEventArgs e)
@@ -41,7 +43,7 @@ namespace HomeworkCompanionGUI
 
         private void btnHomeworkPage_Click(object sender, RoutedEventArgs e)
         {
-            StudentFrame.Content = new ViewHomeworkPage();
+            StudentFrame.Content = new ViewHomeworkPage(_studentID);
         }
 
 

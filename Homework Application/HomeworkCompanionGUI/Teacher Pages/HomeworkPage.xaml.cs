@@ -32,9 +32,11 @@ namespace HomeworkCompanionGUI
         private ClassManagement _classManagement = new ClassManagement();
         private HomeworkManagement _homeworkManagement = new HomeworkManagement();
 
-        public HomeworkPage()
+        public HomeworkPage(int teacherID)
         {
             InitializeComponent();
+
+            _currentTeacher = teacherID;
 
             FillQuestionBank();
             FillClassList(_currentTeacher);

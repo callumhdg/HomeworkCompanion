@@ -22,6 +22,9 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class LoginPage : Page
     {
+        private List<Teacher> _allTeachers = new List<Teacher>();
+        private List<Student> _allStudents = new List<Student>();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -40,6 +43,7 @@ namespace HomeworkCompanionGUI
 
             foreach (var item in allTeachers)
             {
+                _allTeachers.Add(item);
                 lstTeachers.Items.Add(item);
             }
         }
@@ -53,6 +57,7 @@ namespace HomeworkCompanionGUI
 
             foreach (var item in allStudents)
             {
+                _allStudents.Add(item);
                 lstStudents.Items.Add(item);
             }
         }
@@ -60,28 +65,42 @@ namespace HomeworkCompanionGUI
         private void btnTeacherLogin_Click(object sender, RoutedEventArgs e)
         {
             //Select Teacher ID
+            if (lstTeachers.SelectedIndex >= 0)
+            {
+                int id = _allTeachers[lstTeachers.SelectedIndex].TeacherId;
 
-            //Pass Teacher ID
+                TeacherWindow teacherWindow = new TeacherWindow(id);
+                teacherWindow.Show();
 
+                HideMainWindow();
 
-            TeacherWindow teacherWindow = new TeacherWindow();
-            teacherWindow.Show();
-
-            HideMainWindow();
-
-            App.Current.MainWindow = teacherWindow;
+                App.Current.MainWindow = teacherWindow;
+            }
+            else
+            {
+                MessageBox.Show("Please select a teacher");
+            }
+            
         }
 
         private void btnStudentLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (lstStudents.SelectedIndex >= 0)
+            {
+                int id = _allStudents[lstStudents.SelectedIndex].StudentId;
 
+                StudentWindow studentWindow = new StudentWindow(id);
+                studentWindow.Show();
 
-            StudentWindow studentWindow = new StudentWindow();
-            studentWindow.Show();
+                HideMainWindow();
 
-            HideMainWindow();
+                App.Current.MainWindow = studentWindow;
+            }
+            else
+            {
+                MessageBox.Show("Please select a student");
+            }
 
-            App.Current.MainWindow = studentWindow;
         }
 
 

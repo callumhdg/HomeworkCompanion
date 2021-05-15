@@ -23,7 +23,7 @@ namespace HomeworkCompanionGUI
     public partial class ClassPage : Page
     {
         private int? _selectedClass = null; //set default to null
-        private int _currentTeacher = 1; //change when login is added
+        private int _currentTeacher = 0; 
         private StudentManagement _studentManagement = new StudentManagement();
         private StudentsInClassManagement _studentsInClassManagement = new StudentsInClassManagement();
         private ClassManagement _classManagement = new ClassManagement();
@@ -32,12 +32,14 @@ namespace HomeworkCompanionGUI
         private List<Student> _notInClassStudents = new List<Student>();
         private List<Class> _classesOfTeacher = new List<Class>();
 
-        public ClassPage()
+        public ClassPage(int teacherID)
         {
             InitializeComponent();
 
             btnAddToClass.Content = "<- Add --";
             btnRemoveFromClass.Content = "-- Remove ->";
+
+            _currentTeacher = teacherID;
 
             fillListOfClasses(_currentTeacher);
             cbxSelectClass.SelectedIndex = 1;

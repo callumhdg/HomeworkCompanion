@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BusinessLayer;
+using HomeworkCompanion;
 
 namespace HomeworkCompanionGUI
 {
@@ -20,9 +22,23 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class StudentPage : Page
     {
-        public StudentPage()
+        private int _studentID;
+
+        public StudentPage(int studentID)
         {
             InitializeComponent();
+
+            _studentID = studentID;
+            WelcomeMessage(_studentID);
         }
+
+        private void WelcomeMessage(int id)
+        {            
+            StudentManagement studentManagement = new StudentManagement();
+            Student selectedStudent = studentManagement.SelectSingleStudent(id);
+
+            lblWelcome.Content = $"Welcome {selectedStudent.ToString()}";
+        }
+
     }
 }

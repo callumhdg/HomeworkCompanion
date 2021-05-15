@@ -54,7 +54,7 @@ namespace HomeworkCompanionGUI
             _aqManagement.SubmitHomework(_allCurrentQuestions);
 
             StudentWindow studentWindow = (HomeworkCompanionGUI.StudentWindow)App.Current.MainWindow;
-            studentWindow.StudentFrame.Content = new ViewHomeworkPage();
+            studentWindow.StudentFrame.Content = new ViewHomeworkPage(_selectedID);
         }
 
         private void txtAnswer_TextChanged(object sender, TextChangedEventArgs e)

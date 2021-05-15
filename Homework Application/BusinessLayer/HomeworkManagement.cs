@@ -102,7 +102,7 @@ namespace BusinessLayer
 
                 foreach (var item in allStudentHomework)
                 {
-                    int isDue = DateTime.Compare(DateTime.UtcNow, item.DueDate);
+                    int isDue = DateTime.Compare(item.DueDate, DateTime.UtcNow);
 
                     if (isDue >= 0 && item.SubmissionDate == null)
                     {

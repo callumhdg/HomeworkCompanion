@@ -10,7 +10,21 @@ namespace BusinessLayer
     public class StudentManagement
     {
 
+        public Student SelectSingleStudent(int studentID)
+        {
+            using (var db = new HomeworkCompanionContext())
+            {
+                Student output = new Student();
+                var selectStudent =
+                    db.Students
+                    .Where(s => s.StudentId == studentID)
+                    .Select(s => s).FirstOrDefault();
 
+                output = selectStudent;
+
+                return output;
+            }
+        }
 
 
         public List<Student> SelectAllStudent()

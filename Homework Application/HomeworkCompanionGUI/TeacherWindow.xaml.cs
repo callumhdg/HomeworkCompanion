@@ -21,11 +21,13 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class TeacherWindow : Window
     {
-        public TeacherWindow()
+        private int _teacherID = 0;
+        public TeacherWindow(int teacherID)
         {
             InitializeComponent();
 
-            TeacherFrame.Content = new TeacherPage();
+            _teacherID = teacherID;
+            TeacherFrame.Content = new TeacherPage(_teacherID);
         }
 
         private void btnQuestions_Click(object sender, RoutedEventArgs e)
@@ -47,12 +49,12 @@ namespace HomeworkCompanionGUI
 
         private void btnClassesPage_Click(object sender, RoutedEventArgs e)
         {
-            TeacherFrame.Content = new ClassPage();
+            TeacherFrame.Content = new ClassPage(_teacherID);
         }
 
         private void btnAssignHomeworkPage_Click(object sender, RoutedEventArgs e)
         {
-            TeacherFrame.Content = new HomeworkPage();
+            TeacherFrame.Content = new HomeworkPage(_teacherID);
         }
     }
 }

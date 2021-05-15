@@ -22,14 +22,16 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class ViewHomeworkPage : Page
     {
-        private int _currentStudent = 1;//change when login is added
+        private int _currentStudent = 0;
         private HomeworkManagement _homeworkManagement = new HomeworkManagement();
-        private CompleteHomeworkPage _viewHomeworkPage;
+        //private CompleteHomeworkPage _viewHomeworkPage;
 
         private List<Homework> _homeworkSelection = new List<Homework>();
-        public ViewHomeworkPage()
+        public ViewHomeworkPage(int studentID)
         {
             InitializeComponent();
+
+            _currentStudent = studentID;
 
             FillCurrentlyAssignedHomeworks();
         }
