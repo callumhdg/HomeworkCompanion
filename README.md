@@ -1,5 +1,5 @@
 # Homework Companion
-A C# app for teachers to allocate classes of students homework.
+A C# app for teachers to allocate classes of students homework, a user guide can be found [here](User_Guide.md).
 
 
 
@@ -197,9 +197,9 @@ This sprint lasted Saturday and Sunday because neither day was a full day worth 
 
 **Sprint Goals:**
 
-- [ ] Implement dynamic login
-- [ ] User Story 5.1
-- [ ] User Story 5.2
+- [x] Implement dynamic login
+- [x] User Story 5.1
+- [x] User Story 5.2
 
 
 
@@ -213,7 +213,9 @@ This sprint lasted Saturday and Sunday because neither day was a full day worth 
 
 
 
+### Retrospective:
 
+This sprint was less organised than the other sprints due to it being on a busy weekend but the sprint was still complete which leaves only stretch goals. 
 
 
 

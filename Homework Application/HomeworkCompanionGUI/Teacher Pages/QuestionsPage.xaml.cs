@@ -57,7 +57,12 @@ namespace HomeworkCompanionGUI
             
             if (txtQuestion.Text != "" && txtAnswer.Text != "" && txtMaximumMarks.Text != "" && maxMarksIsInt == true)
             {
-                _QTManager.CreateQuestionTemplate(txtQuestion.Text, txtAnswer.Text, Convert.ToInt32(txtMaximumMarks.Text));
+                if ((int)Convert.ToInt32(maxMarksInput) <= 0)
+                {
+                    maxMarksInput = "1"; //sets default maximum marks to 1
+                }
+
+                _QTManager.CreateQuestionTemplate(txtQuestion.Text, txtAnswer.Text, Convert.ToInt32(maxMarksInput));
             }
             else
             {

@@ -22,19 +22,20 @@ namespace HomeworkCompanionGUI
     /// </summary>
     public partial class GradeHomeworkPage : Page
     {
-        private int _classID, _homeworkID;
+        private int _classID, _homeworkID, _teacherID;
 
         private AssignedQuestionManagement _assignedQuestionManagement = new AssignedQuestionManagement();
         private HomeworkManagement _homeworkManagement = new HomeworkManagement();
 
         private List<AssignedQuestion> _questionsInHomework = new List<AssignedQuestion>();
 
-        public GradeHomeworkPage(int classID, int homeworkID)
+        public GradeHomeworkPage(int classID, int homeworkID, int teacherID)
         {
             InitializeComponent();
 
             _classID = classID;
             _homeworkID = homeworkID;
+            _teacherID = teacherID;
 
             PopulateQuestions(_homeworkID);
             lstQuestionsInHomework.SelectedIndex = 0;//selects first question by default
@@ -64,43 +65,64 @@ namespace HomeworkCompanionGUI
         {            
             int allMaxMarks = 0, allAwardedMarks = 0;
 
+            for (int i = 0; i < _questionsInHomework.Count; i++)
+            {
+                if (_questionsInHomework[i].AwardedMarks == null)
+                {
+                    _questionsInHomework[i].AwardedMarks = 0;
+                }
+                else if (_questionsInHomework[i].AwardedMarks > _questionsInHomework[i].MaximumMarks)
+                {
+                    _questionsInHomework[i].AwardedMarks = _questionsInHomework[i].MaximumMarks;
+                }
+            }
+
             foreach (var item in _questionsInHomework)
             {
                 allMaxMarks += item.MaximumMarks;
                 allAwardedMarks += (int)item.AwardedMarks;
             }
 
-            decimal persentageGrade = allAwardedMarks / allMaxMarks;
-            persentageGrade = System.Math.Round(persentageGrade, 1);
+            int persentageGrade = (int)Math.Round((double)(100 * allAwardedMarks) / allMaxMarks);
             string marks = $"{allAwardedMarks} / {allMaxMarks} - {persentageGrade}%";
 
             _homeworkManagement.AssignMarksToHomework(_homeworkID, marks, _questionsInHomework);
+
+            TeacherWindow teacherWindow = (HomeworkCompanionGUI.TeacherWindow)App.Current.MainWindow;
+            teacherWindow.TeacherFrame.Content = new ViewSubmitedHomeworkPage(_classID, _teacherID);
         }
 
         private void txtMarks_TextChanged(object sender, TextChangedEventArgs e)
         {
-            bool inputIsInt = int.TryParse(txtMarks.Text, out _);
-
-            if (inputIsInt == true)
+            if (txtMarks.Text == "")
             {
-                if (Convert.ToInt32(txtMarks.Text) >= _questionsInHomework[lstQuestionsInHomework.SelectedIndex].MaximumMarks)
-                {
-                    _questionsInHomework[lstQuestionsInHomework.SelectedIndex].AwardedMarks = _questionsInHomework[lstQuestionsInHomework.SelectedIndex].MaximumMarks;
-                }
-                else
-                {
-                    _questionsInHomework[lstQuestionsInHomework.SelectedIndex].AwardedMarks = Convert.ToInt32(txtMarks.Text);
-                }
+
             }
             else
             {
-                string removeLastChar = txtMarks.Text, invalidInput = "";
-                invalidInput = removeLastChar.Substring((removeLastChar.Length - 1), 1);
-                removeLastChar = removeLastChar.Substring(0, (removeLastChar.Length - 1));
+                bool inputIsInt = int.TryParse(txtMarks.Text, out _);
 
-                MessageBox.Show($"{invalidInput} is not a valid input, please only input an intager number");
+                if (inputIsInt == true)
+                {
+                    if (Convert.ToInt32(txtMarks.Text) >= _questionsInHomework[lstQuestionsInHomework.SelectedIndex].MaximumMarks)
+                    {
+                        _questionsInHomework[lstQuestionsInHomework.SelectedIndex].AwardedMarks = _questionsInHomework[lstQuestionsInHomework.SelectedIndex].MaximumMarks;
+                    }
+                    else
+                    {
+                        _questionsInHomework[lstQuestionsInHomework.SelectedIndex].AwardedMarks = Convert.ToInt32(txtMarks.Text);
+                    }
+                }
+                else
+                {
+                    string removeLastChar = txtMarks.Text, invalidInput = "";
+                    invalidInput = removeLastChar.Substring((removeLastChar.Length - 1), 1);
+                    removeLastChar = removeLastChar.Substring(0, (removeLastChar.Length - 1));
 
-                txtMarks.Text = removeLastChar;
+                    MessageBox.Show($"{invalidInput} is not a valid input, please only input an intager number");
+
+                    txtMarks.Text = removeLastChar;
+                }
             }
         }
 

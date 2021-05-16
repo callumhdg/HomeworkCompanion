@@ -37,6 +37,8 @@ namespace HomeworkCompanionGUI
             _teacherID = teacherID;
             _classID = classID;
             PopulateClasses(_teacherID);
+
+            lstClassesOfTeacher.SelectedIndex = 0;//select first class as default
         }
 
         public ViewSubmitedHomeworkPage(int teacherID)
@@ -73,7 +75,7 @@ namespace HomeworkCompanionGUI
                 int homeworkID = _homeworkOfClass[lstHomeworkToMark.SelectedIndex].HomeworkId;
 
                 TeacherWindow teacherWindow = (HomeworkCompanionGUI.TeacherWindow)App.Current.MainWindow;
-                teacherWindow.TeacherFrame.Content = new GradeHomeworkPage(_classID, homeworkID);
+                teacherWindow.TeacherFrame.Content = new GradeHomeworkPage(_classID, homeworkID, _teacherID);
             }
             else
             {
@@ -88,9 +90,16 @@ namespace HomeworkCompanionGUI
 
             foreach (var item in _homeworkOfClass)
             {
-                string submited = item.SubmissionDate == null ? "Not Submitted": "Submited";
+                if (item.Marks != null)
+                {
+                    lstHomeworkToMark.Items.Add($"{item.Title} - Graded: {item.Marks}");
+                }
+                else
+                {
+                    string submited = item.SubmissionDate == null ? "Not Submitted" : "Submited";
 
-                lstHomeworkToMark.Items.Add($"{item.Title} - {submited}");
+                    lstHomeworkToMark.Items.Add($"{item.Title} - {submited}");
+                }
             }
         }
 

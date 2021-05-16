@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HomeworkCompanionGUI"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="1200"
       Title="CompleteHomeworkPage">
 
     <Grid Background="White">
@@ -53,7 +53,7 @@
         <Label Content="Answer" Grid.Column="6" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="4" FontSize="40"/>
         <TextBox x:Name="txtAnswer" Grid.Column="6" Grid.Row="4" Grid.ColumnSpan="4" VerticalContentAlignment="Center" FontSize="16" Background="#f7e6ff" Foreground="#400080" TextChanged="txtAnswer_TextChanged"/>
 
-        <Button x:Name="btnSubmitHomework" Content="Submit Homework" Click="btnSubmitHomework_Click" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" MinHeight="40" FontSize="20" Margin="5, 5, 5, 5">
+        <Button x:Name="btnSubmitHomework" Content="Submit Homework" Click="btnSubmitHomework_Click" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" MinHeight="40" FontSize="24" Margin="5, 5, 5, 5">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#00e600" Offset="1"/>
@@ -63,7 +63,7 @@
         </Button>
 
 
-        <Button x:Name="btnSaveAsDraft" Content="Save Draft" Grid.Column="6" Grid.Row="6" Grid.ColumnSpan="2" MinHeight="40" FontSize="20" Margin="5, 5, 5, 5" Click="btnSaveAsDraft_Click">
+        <Button x:Name="btnSaveAsDraft" Content="Save Draft" Grid.Column="6" Grid.Row="6" Grid.ColumnSpan="2" MinHeight="40" FontSize="24" Margin="5, 5, 5, 5" Click="btnSaveAsDraft_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#4d79ff" Offset="1"/>

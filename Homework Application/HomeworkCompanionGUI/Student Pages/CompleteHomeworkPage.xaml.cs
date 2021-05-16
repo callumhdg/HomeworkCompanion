@@ -43,8 +43,8 @@ namespace HomeworkCompanionGUI
 
             for (int i = 0; i < _allCurrentQuestions.Count; i++)
             {
-                //lstQuestionsInHomework.Items.Add($"{i} - {_allCurrentQuestions[i].QuestionText} - Max Marks: {_allCurrentQuestions[i].MaximumMarks}");
-                lstQuestionsInHomework.Items.Add($"{i} - {_allCurrentQuestions[i].QuestionText}");
+                lstQuestionsInHomework.Items.Add($"{i} - {_allCurrentQuestions[i].QuestionText} - Max Marks: {_allCurrentQuestions[i].MaximumMarks}");
+                //lstQuestionsInHomework.Items.Add($"{i} - {_allCurrentQuestions[i].QuestionText}");
             }
 
         }
