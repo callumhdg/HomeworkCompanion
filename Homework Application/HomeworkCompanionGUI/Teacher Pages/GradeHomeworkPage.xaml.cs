@@ -134,7 +134,7 @@ namespace HomeworkCompanionGUI
 
             for (int i = 0; i < _questionsInHomework.Count; i++)
             {
-                lstQuestionsInHomework.Items.Add($"{i} - {_questionsInHomework[i].QuestionText} - Maximum Marks:{_questionsInHomework[i].MaximumMarks}");
+                lstQuestionsInHomework.Items.Add($"{i} - {_questionsInHomework[i].QuestionText} - Maximum Marks: {_questionsInHomework[i].MaximumMarks}");
             }
         }
 

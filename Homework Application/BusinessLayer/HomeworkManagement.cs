@@ -118,7 +118,7 @@ namespace BusinessLayer
 
 
 
-        public List<Homework> SelectHomeworksInClassToMark(int classID)
+        public List<Homework> SelectHomeworksInClassToMark(int classID)//change when database is updated
         {
             using (var db = new HomeworkCompanionContext())
             {

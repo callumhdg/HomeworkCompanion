@@ -61,6 +61,8 @@ namespace HomeworkCompanionGUI
         {
             List<Class> classes = _classManagement.SelectAllClassesForATeacher(teacherID);
 
+            lstClassesOfTeacher.Items.Clear();
+
             foreach (var item in classes)
             {
                 _classes.Add(item);
@@ -87,6 +89,8 @@ namespace HomeworkCompanionGUI
         private void PopulateHomeworkToMark(int classID)
         {
             _homeworkOfClass = _homeworkManagement.SelectHomeworksInClassToMark(classID);
+
+            lstHomeworkToMark.Items.Clear();
 
             foreach (var item in _homeworkOfClass)
             {

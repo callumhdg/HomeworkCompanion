@@ -5,7 +5,7 @@ A C# app for teachers to allocate classes of students homework, a user guide can
 
 # ERD
 
-![](C:\Users\callu\Desktop\Sparta Global Training\Reops\HomeworkCompanion\Images\ERD.png)
+![ERD](Images/ERD.png)
 
 
 
@@ -215,7 +215,7 @@ This sprint lasted Saturday and Sunday because neither day was a full day worth 
 
 ### Retrospective:
 
-This sprint was less organised than the other sprints due to it being on a busy weekend but the sprint was still complete which leaves only stretch goals. 
+This sprint was less organised than the other sprints due to it being on a busy weekend but the sprint was still complete which leaves only stretch goals. One design flaw was noticed though, the Homework table should have a column for a foreign key link to the class it was assigned from, If there is time in the next sprint this will be fixed.
 
 
 
