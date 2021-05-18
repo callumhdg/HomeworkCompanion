@@ -62,11 +62,9 @@ This page allows the teacher to select a class and view all homework for that cl
 
 ### Assign Marks Page
 
-![AssignMarksPage](Images/UserGuide/TeacherMarkingPage.png)
+![AssignMarksPage](Images/UserGuide/TeacherAssignMarksPage.png)
 
 This page allows the teacher to assign marks to a students homework. When 'Submit Grades' is clicked the marks are submitted and the grade is calculated, any unmarked questions will be marked as 0 and if more marks are given than the maximum marks allows then the maximum marks are achieved but no higher.
-
-
 
 
 
@@ -82,8 +80,6 @@ This is the homepage for students, here they can [logout](#Login) or [view their
 
 
 
-
-
 ### View Assigned Homework Page
 
 ![ViewAssignedHomeworkPage](Images/UserGuide/StudentHomeworkViewPage.png)
@@ -94,17 +90,8 @@ This page allows students to view their current homework, that is homework that 
 
 
 
-
-
 ### Complete Homework Page
 
 ![CompleteHomeworkPage](Images/UserGuide/StudentCompleteHomeworkPage.png)
 
 Here the student can add answers to the homework they selected. The 'Save Draft' button will save all current answers but not submit the homework allowing the student to complete the homework at a later date whilst keeping their progress. The 'Submit Homework' button saves all answers and submits the homework, this removes access to this homework for the student but will appear as 'Submitted' to the teacher when the due date has passed and the teacher goes to mark the homework.
-
-
-
-
-
-
-

@@ -189,7 +189,7 @@ This sprint went wall overall but I would have liked to complete more functional
 
 ### Start:
 
-![Sprint4_Start_Backlog](Images/Backlog_8.png)
+![Sprint5_Start_Backlog](Images/Backlog_8.png)
 
 This sprint lasted Saturday and Sunday because neither day was a full day worth of work so this one sprint was two half days.
 
@@ -223,9 +223,34 @@ This sprint was less organised than the other sprints due to it being on a busy 
 
 
 
+## Sprint 6 -
+
+### Start:
+
+![Sprint6_Start_Backlog](Images/Backlog_10.png)
+
+
+
+**Sprint Goals:**
+
+- [x] Complete Documentation
+- [ ] Fix Homework to Class Relation
+- [ ] User Story 6.1
+
+Prepare for presentation
+- [x] PowerPoint
+- [ ] Dummy Data
+
+
+
+### End:
+
+![Sprint6_End_Backlog](Images/Backlog_11.png)
 
 
 
 
 
+### Retrospective:
 
+Unfortunately there was not enough time to make changes to the database to have each homework reference the class it belongs to as this could have caused problems that would appear in the presentation tomorrow, in the future I would like to make this change just not this close to presenting it.  There was also not enough time to implement user story 6.1 which would allow students to view their grades, this is a fairly small addition that could be built on significantly but due to having to prepare for the presentation and complete the documentation there wasn't enough time in this sprint.
