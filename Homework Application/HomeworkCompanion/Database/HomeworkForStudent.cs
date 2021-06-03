@@ -7,6 +7,12 @@ namespace HomeworkCompanion
 {
     public partial class HomeworkForStudent
     {
+        public HomeworkForStudent(int studentIdFk, int homeworkIdFk)
+        {
+            StudentIdFk = studentIdFk;
+            HomeworkIdFk = homeworkIdFk;
+        }
+
         public int StudentIdFk { get; set; }
         public int HomeworkIdFk { get; set; }
 

@@ -7,6 +7,14 @@ namespace HomeworkCompanion
 {
     public partial class AssignedQuestion
     {
+        public AssignedQuestion(string questionText, string submitedAnswer, string teachersAnswer, int maximumMarks)
+        {
+            QuestionText = questionText;
+            SubmitedAnswer = submitedAnswer;
+            TeachersAnswer = teachersAnswer;
+            MaximumMarks = maximumMarks;
+        }
+
         public int AssignedQuestionId { get; set; }
         public int HomeworkIdFk { get; set; }
         public string QuestionText { get; set; }

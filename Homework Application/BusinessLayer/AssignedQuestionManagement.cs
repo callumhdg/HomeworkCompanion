@@ -23,12 +23,12 @@ namespace BusinessLayer
                 {
                     QuestionTemplate questionTemplate = qtManagement.SelectSingleQuestionTemplate(item.QuestionId);
 
-                    AssignedQuestion newAssignedQuestion = new AssignedQuestion();
+                    AssignedQuestion newAssignedQuestion = new AssignedQuestion(questionTemplate.QuestionText, questionTemplate.Answer, questionTemplate.Answer, questionTemplate.MaximumMarks);
 
-                    newAssignedQuestion.QuestionText = questionTemplate.QuestionText;
-                    newAssignedQuestion.TeachersAnswer = questionTemplate.Answer;
-                    newAssignedQuestion.MaximumMarks = questionTemplate.MaximumMarks;
-                    newAssignedQuestion.HomeworkIdFk = homeworkID;
+                    //newAssignedQuestion.QuestionText = questionTemplate.QuestionText;
+                    //newAssignedQuestion.TeachersAnswer = questionTemplate.Answer;
+                    //newAssignedQuestion.MaximumMarks = questionTemplate.MaximumMarks;
+                    //newAssignedQuestion.HomeworkIdFk = homeworkID;
 
                     db.AssignedQuestions.Add(newAssignedQuestion);
                 }

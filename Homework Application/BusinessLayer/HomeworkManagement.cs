@@ -18,7 +18,7 @@ namespace BusinessLayer
         {
             using (var db = new HomeworkCompanionContext())
             {
-                var newHomework = new Homework() { Title = title, DueDate = dueDate };
+                var newHomework = new Homework(title, dueDate);
                 db.Homeworks.Add(newHomework);
 
                 db.SaveChanges();

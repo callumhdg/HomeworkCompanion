@@ -7,8 +7,11 @@ namespace HomeworkCompanion
 {
     public partial class Homework
     {
-        public Homework()
+        public Homework(string title, DateTime dueDate)
         {
+            Title = title;
+            DueDate = dueDate;
+
             AssignedQuestions = new HashSet<AssignedQuestion>();
             HomeworkForStudents = new HashSet<HomeworkForStudent>();
         }
