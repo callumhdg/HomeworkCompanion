@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,71 +11,80 @@ namespace BusinessLayer
     public class QuestionTemplateManagement
     {
         public QuestionTemplate SelectedQuestionTemplate { get; set; }
+        private IQuestionTemplateService _service;
+
+        public QuestionTemplateManagement()
+        {
+            _service = new QuestionTemplateService();
+        }
+
+        public QuestionTemplateManagement(IQuestionTemplateService service)
+        {
+            if (service == null)
+            {
+                throw new ArgumentException("Question Template Service can't be null");
+            }
+            _service = service;
+        }
 
         public void CreateQuestionTemplate(string questionText, string answer, int maxMarks)
         {
-            var newQuestionTemplate = new QuestionTemplate() { QuestionText = questionText, Answer = answer, MaximumMarks = maxMarks };
-            using (var db = new HomeworkCompanionContext())
-            {
-                db.QuestionTemplates.Add(newQuestionTemplate);
-                db.SaveChanges();
-            }
+            var newQuestionTemplate = new QuestionTemplate(questionText, answer, maxMarks);
+            _service.CreateQuestionTemplate(newQuestionTemplate);
         }
 
 
-        public void UpdateQuestionTemplate(int id, string question, string answer, int maxMarks)
+        public bool UpdateQuestionTemplate(int id, string question, string answer, int maxMarks)
         {
-            using (var db = new HomeworkCompanionContext())
+            SelectedQuestionTemplate = _service.SelectSingleQuestionTemplate(id);
+            if (SelectedQuestionTemplate == null)
             {
-                SelectedQuestionTemplate = db.QuestionTemplates.Find(id);
-
-                SelectedQuestionTemplate.QuestionText = question;
-                SelectedQuestionTemplate.Answer = answer;
-                SelectedQuestionTemplate.MaximumMarks = maxMarks;
-
-                db.SaveChanges();
+                return false;
             }
+
+            SelectedQuestionTemplate.QuestionText = question;
+            SelectedQuestionTemplate.Answer = answer;
+            SelectedQuestionTemplate.MaximumMarks = maxMarks;
+
+            try
+            {
+                _service.SaveQuestionTemplateChanges();
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine($"Error updating Question Template: {id}");
+                return false;
+            }
+
+            return true;
         }
 
 
-        public void DeleteQuestionTemplate(int id)
+        public bool DeleteQuestionTemplate(int id)
         {
-            using (var db = new HomeworkCompanionContext())
+            SelectedQuestionTemplate = _service.SelectSingleQuestionTemplate(id);
+            if (SelectedQuestionTemplate == null)
             {
-                var questionTemplateToDelete = db.QuestionTemplates.Find(id);
-                db.QuestionTemplates.Remove(questionTemplateToDelete);
-                db.SaveChanges();
+                Debug.WriteLine($"Can't find - Question Template: {id}");
+                return false;
             }
+
+            _service.DeleteQuestionTemplate(SelectedQuestionTemplate);
+            SelectedQuestionTemplate = null;
+            return true;
+
         }
 
 
         public List<QuestionTemplate> SelectAllQuestionTemplates()
         {
-            using (var db = new HomeworkCompanionContext())
-            {
-                List<QuestionTemplate> output = new List<QuestionTemplate>();
-                var allQuestionTemplates = db.QuestionTemplates.Select(q => q);
-
-                foreach (var item in allQuestionTemplates)
-                {
-                    output.Add(item);
-                }
-
-                return output;
-            }            
+            return _service.SelectAllQuestionTemplates();       
         }
 
 
         public QuestionTemplate SelectSingleQuestionTemplate(int id)
         {
-            using (var db = new HomeworkCompanionContext())
-            {
-                var selectQuestion = db.QuestionTemplates
-                    .Where(q => q.QuestionId == id)
-                    .Select(q => q).FirstOrDefault();
-
-                return selectQuestion;
-            }
+            return _service.SelectSingleQuestionTemplate(id);
         }
 
 
