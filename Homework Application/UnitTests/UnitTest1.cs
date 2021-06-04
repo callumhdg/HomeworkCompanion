@@ -55,7 +55,7 @@ namespace UnitTests
 
             using (var db = new HomeworkCompanionContext())
             {
-                var newQuestionTemplate = new QuestionTemplate() { QuestionText = "example123", Answer = "example123", MaximumMarks = 201 };
+                var newQuestionTemplate = new QuestionTemplate("example123", "example123", 201);
                 db.QuestionTemplates.Add(newQuestionTemplate);
                 db.SaveChanges();
 
@@ -90,7 +90,7 @@ namespace UnitTests
             {
                 int before = 0, after = 0;
                 
-                var newQuestionTemplate = new QuestionTemplate() { QuestionText = "example111", Answer = "example111", MaximumMarks = 101 };
+                var newQuestionTemplate = new QuestionTemplate("example111", "example111", 101);
                 db.QuestionTemplates.Add(newQuestionTemplate);
                 db.SaveChanges();
 
@@ -143,7 +143,7 @@ namespace UnitTests
 
         }
 
-
+        [Ignore("Not Implemented")]
         [Test]
         public void StudentIsAddedToClass()
         {
@@ -151,7 +151,7 @@ namespace UnitTests
         }
 
 
-
+        [Ignore("Not Implemented")]
         [Test]
         public void StudentIsRemovedFromClass()
         {
